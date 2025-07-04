@@ -91,3 +91,16 @@ axios({
     5. 5xx：服务器错误，表示服务器在处理请求的过程中发生错误
     6. 6xx：未知错误，表示服务器在处理请求的过程中发生未知错误
    
+
+# 关于html的补充1
+  <!DOCTYPE html> 这个标签是告诉浏览器，用html5标准来渲染页面
+  <html lang="zh-CN"> 这个标签，表示这个页面是中文的
+  <meta charset="UTF-8"> 这个标签，表示这个页面的字符编码是UTF-8
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 这个标签，表示这个页面兼容IE浏览器
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 这个标签，表示这个页面的宽度是设备宽度，初始缩放比例是1
+
+
+
+
+
+

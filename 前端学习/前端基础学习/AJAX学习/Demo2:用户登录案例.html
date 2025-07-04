@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>欢迎-登录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #fafbfc;
+      font-family: "微软雅黑", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .login-container {
+      width: 350px;
+      margin: 80px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 40px 32px 32px 32px;
+    }
+    .login-title {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 36px;
+      letter-spacing: 2px;
+    }
+    .form-group {
+      margin-bottom: 28px;
+    }
+    label {
+      display: block;
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px 10px;
+      font-size: 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      outline: none;
+      box-sizing: border-box;
+      background: #fafbfc;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #1890ff;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 12px 0;
+      background: #1890ff;
+      color: #fff;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 8px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .login-btn:hover {
+      background: #1765ad;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-title">欢迎-登录</div>
+    <form>
+      <div class="form-group">
+        <label for="username">账号名</label>
+        <input type="text" id="username" name="username" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" id="password" name="password" autocomplete="off">
+      </div>
+      <button type="submit" class="login-btn">登&nbsp;&nbsp;录</button>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script> 
+    document.querySelector('.login-btn').addEventListener('click',()=>{
+        let username = document.querySelector('#username').value;
+        let password = document.querySelector('#password').value;
+        if (username.length < 5){
+            alert('用户名长度不能小于5位');
+            return;
+        }
+        if (password.length < 6){
+            alert('密码长度不能小于6位');
+            return;
+        }
+        axios({
+            URL: 'http://hmajax.itheima.net/api/login',
+            method: 'POST',
+            data: {
+                username,
+                password
+            }
+        }).then(res => {
+            console.log(res.data);
+            if (res.data.code !== 200){
+                alert(res.data.message);
+            }else{
+                alert('登录成功');
+            }
+        })
+    })
+        
+  </script>
+</body>
+</html>
